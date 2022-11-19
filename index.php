@@ -2,14 +2,15 @@
 <?php
 
     if (isset($_POST['pay'])) {
-        $enable_sandbox = false; // Enable sandbox for test payments.
+        $site_url = 'http://localhost/pay-with-paypal'; // the url of your website
+        $enable_sandbox = false; // enable sandbox for test payments.
         // paypal configurations
         $paypal_conf = [
             'cmd' => '_donations', // use '_xclick' for purchase or pay now button
             'email' => 'youremail@domain.com', // paypal emai where payments will be sent
-            'return_url' => 'http://localhost/pay-with-paypal?paypal-response=successful',
-            'cancel_url' => 'http://localhost/pay-with-paypal?paypal-response=cancelled',
-            'notify_url' => 'http://localhost/pay-with-paypal'
+            'return_url' => $site_url . '?paypal-response=successful',
+            'cancel_url' => $site_url . '?paypal-response=cancelled',
+            'notify_url' => $site_url
         ];
         // set data to be sent to paypal
         $data = [];
@@ -57,11 +58,6 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" height="20px"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480V396.4c0-4 1.5-7.8 4.2-10.7L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
                 </button>
             </form>
-            <p style="width:400px;font-size:12px;margin-top:2em;text-align:center;">
-                Hi there, this is a demo page of <a href="https://github.com/infanteChryss/pay-with-paypal">Pay with PayPal</a> GitHub Repository.<br/>
-                Please note that <strong>Sandbox is disabled</strong> in this demo page.<br/>
-                All test payments will serve as your donation to the developer.
-            </p>
         <?php endif;?>
     </body>
 </html>
